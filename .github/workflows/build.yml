@@ -28,7 +28,7 @@ jobs:
         run: |
             docker build -t youtube .
             docker tag youtube rahul70/youtube:latest
-            docker login -y ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+            docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
             docker push rahul70/youtube:latest
       - name: docker deploy 
         run: docker run -d --name youtube -p 9000:9000 rahul70/youtube:latest
