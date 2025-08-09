@@ -1,0 +1,33 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: youtube-clone
+spec:
+  replicas: 1
+  selector:
+    matchlabels:
+      app: youtube-clone
+    template:
+      metadata:
+        labels:
+          app: youtube-clone
+        spec:
+          containers:
+          - name: youtube-clone-container
+            image: rahul70/youtube-clone:latest
+            ports:
+
+---
+apiVersion: v1 
+kind: Service
+metadata:
+  name: youtube-clone-service
+spec:
+  selector:
+    app: youtube-clone
+    ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+    type: LoadBalancer
