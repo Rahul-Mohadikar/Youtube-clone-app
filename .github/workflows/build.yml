@@ -41,4 +41,4 @@ jobs:
           run: docker pull rahul70/youtube:latest
           
         - name: deploy to container
-          run: docker run -d --name youtube -p 9000:9000 rahul70/youtube:latest
+          run: docker run -d --name youtube -p 3000:3000 rahul70/youtube:latest
