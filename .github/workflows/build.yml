@@ -38,7 +38,7 @@ jobs:
         - name: docker pull image 
           run: docker pull rahul70/youtube:latest
 
-        - name: docker deploy 
+        - name: docker Deploy 
           run: docker run -d --name youtube -p 3000:3000 rahul70/youtube:latest    
     
      
