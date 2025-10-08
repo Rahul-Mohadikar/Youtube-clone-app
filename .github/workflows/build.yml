@@ -31,14 +31,14 @@ jobs:
           docker tag youtube rahul70/youtube:latest
           docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
           docker push rahul70/youtube:latest
-    deploy:
-      needs: build-analyze-scan
-      runs-on: [self-hosted]
-      steps:
-        - name: docker pull image 
-          run: docker pull rahul70/youtube:latest
+  deploy:
+    needs: build-analyze-scan
+    runs-on: [self-hosted]
+    steps:
+      - name: docker pull image 
+        run: docker pull rahul70/youtube:latest
 
-        - name: docker Deploy 
-          run: docker run -d --name youtube -p 3000:3000 rahul70/youtube:latest    
+      - name: docker deploy 
+        run: docker run -d --name youtube -p 3000:3000 rahul70/youtube:latest    
     
      
